@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 
 int main() {
-    std::string stroke = "hello world!";
+    std::string stroke = "";
     std::cout<<stroke<<std::endl;
     stroke = base64_encode(stroke);
     std::cout<<stroke<<std::endl;
@@ -126,17 +126,29 @@ TEST(base64Test,base64_to_bytes){
 }
 
 TEST(base64Test,base64_encode){
+    //test 1
     std::string stroke = "1234567890-=!@#$%^&*()_+qwertyuiop[]\\QWERTYUIOP{}|asdfghjkl;'ASDFGHJKL:zxcvbnm,./ZXCVBNM<>?\"zxcvbnm,./ZXCVBNM<>?";
     stroke+="йцукенгшщзхъ\\ЙЦУКЕНГШЩЗХЪ/фывапролджэФЫВАПРОЛДЖЭячсмитьбю.ЯЧСМИТЬБЮ,!№;%:?*()_+";
     std::string encoded = "MTIzNDU2Nzg5MC09IUAjJCVeJiooKV8rcXdlcnR5dWlvcFtdXFFXRVJUWVVJT1B7fXxhc2RmZ2hqa2w7J0FTREZHSEpLTDp6eGN2Ym5tLC4vWlhDVkJOTTw+PyJ6eGN2Ym5tLC4vWlhDVkJOTTw+P1wvLiwhOyU6PyooKV8r";
     std::string encodedTest = base64_encode(stroke);
     EXPECT_EQ(encodedTest,encodedTest);
+    //test 2
+    stroke = "";
+    encoded = "";
+    encodedTest = base64_encode(stroke);
+    EXPECT_EQ(encodedTest,encodedTest);
 
 }
 
 TEST(base64Test,base64_decode){
+    //test 1
     std::string encoded = "MTIzNDU2Nzg5MC09IUAjJCVeJiooKV8rcXdlcnR5dWlvcFtdXFFXRVJUWVVJT1B7fXxhc2RmZ2hqa2w7J0FTREZHSEpLTDp6eGN2Ym5tLC4vWlhDVkJOTTw+PyJ6eGN2Ym5tLC4vWlhDVkJOTTw+Pw==";
     std::string stroke = "1234567890-=!@#$%^&*()_+qwertyuiop[]\\QWERTYUIOP{}|asdfghjkl;'ASDFGHJKL:zxcvbnm,./ZXCVBNM<>?\"zxcvbnm,./ZXCVBNM<>?";
     std::string strokeTest = base64_decode(encoded);
+    EXPECT_EQ(strokeTest,stroke);
+    //test 2
+    stroke = "";
+    encoded = "";
+    strokeTest = base64_decode(encoded);
     EXPECT_EQ(strokeTest,stroke);
 }

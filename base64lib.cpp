@@ -58,7 +58,7 @@ std::vector<byte> bytes_to_base64(std::vector<byte> bytes){
 }
 //encoder base64
 std::string base64_encode(std::string stroke){
-
+    if (stroke == "") return stroke;
     std::vector<byte> bytes64 = stroke_to_bytes(stroke);
     bytes64 = bytes_to_base64(bytes64);
 
@@ -109,7 +109,7 @@ std::vector<byte> base64_to_bytes(std::vector<byte> bytes64){
 }
 //decoder base64
 std::string base64_decode(std::string stroke){
-
+    if (stroke == "") return stroke;
     std::vector<byte> bytes64 = stroke_to_bytes64(stroke);
     std::vector<byte> bytes = base64_to_bytes(bytes64);
 
